@@ -1,36 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic Website</title>
+    <title>Magazin Accesorii Telefon</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-        header, footer { background: #333; color: white; text-align: center; padding: 10px; }
-        nav { background: #555; padding: 10px; text-align: center; }
-        nav a { color: white; text-decoration: none; margin: 0 15px; }
-        main { padding: 20px; text-align: center; }
+        header { background: #333; color: white; text-align: center; padding: 15px; }
+        nav { background: #555; text-align: center; padding: 10px; }
+        nav a { color: white; text-decoration: none; margin: 15px; font-size: 18px; }
+        .banner { text-align: center; padding: 50px; background: #f4f4f4; }
+        .container { display: flex; justify-content: center; flex-wrap: wrap; padding: 20px; }
+        .category { text-align: center; margin: 20px; padding: 20px; border: 1px solid #ddd; width: 200px; }
+        .category img { width: 100px; height: auto; }
+        footer { background: #333; color: white; text-align: center; padding: 10px; margin-top: 20px; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>My Website</h1>
+    <h1>Magazin Accesorii Telefon</h1>
 </header>
 
 <nav>
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
+    <a href="index.html">Acasa</a>
+    <a href="produse.html">Produse</a>
+    <a href="cos.html">Cos de Cumparaturi</a>
+    <a href="contact.html">Contact</a>
 </nav>
 
-<main>
-    <h2>Welcome to My Website</h2>
-    <p>This is a simple HTML layout.</p>
-</main>
+<section class="banner">
+    <h2>Bine ai venit!</h2>
+    <p>Descopera cele mai bune accesorii pentru telefonul tau.</p>
+</section>
+
+<section class="container">
+    <div class="category">
+        <img src="images/husa.jpg" alt="Huse">
+        <h3>Huse</h3>
+    </div>
+    <div class="category">
+        <img src="images/folie.jpg" alt="Folie protectie">
+        <h3>Folie protectie</h3>
+    </div>
+    <div class="category">
+        <img src="images/casti.jpg" alt="Casti">
+        <h3>Casti</h3>
+    </div>
+    <div class="category">
+        <img src="images/incarcator.jpg" alt="Incarcatoare">
+        <h3>Incarcatoare</h3>
+    </div>
+</section>
 
 <footer>
-    <p>&copy; 2025 My Website</p>
+    <p>&copy; 2025 Magazin Accesorii Telefon</p>
 </footer>
 
 </body>
