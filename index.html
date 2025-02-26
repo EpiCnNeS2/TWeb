@@ -4,17 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cristian Store</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-        header { background: #333; color: white; text-align: center; padding: 15px; }
-        nav { background: #555; text-align: center; padding: 10px; }
-        nav a { color: white; text-decoration: none; margin: 15px; font-size: 18px; }
-        .banner { text-align: center; padding: 50px; background: #f4f4f4; }
-        .container { display: flex; justify-content: center; flex-wrap: wrap; padding: 20px; }
-        .category { text-align: center; margin: 20px; padding: 20px; border: 1px solid #ddd; width: 200px; }
-        .category img { width: 100px; height: auto; }
-        footer { background: #333; color: white; text-align: center; padding: 10px; margin-top: 20px; }
-    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 
@@ -23,15 +14,20 @@
 </header>
 
 <nav>
-    <a href="index.html">Acasa</a>
-    <a href="produse.html">Produse</a>
-    <a href="cos.html">Cos de Cumparaturi</a>
-    <a href="contact.html">Contact</a>
+    <div>
+        <a href="index.html">Acasa</a>
+        <a href="produse.html">Produse</a>
+        <a href="cos.html">Cos de Cumparaturi</a>
+    </div>
+    <input type="text" class="search-bar" placeholder="Cauta produse...">
 </nav>
 
 <section class="banner">
-    <h2>Bine ai venit!</h2>
-    <p>Descopera cele mai bune accesorii pentru telefonul tau.</p>
+    <h2>Oferte speciale la accesorii pentru telefon!</h2>
+</section>
+
+<section>
+    <h2 style="text-align: center; margin-bottom: 0px;">Colectii de Produse</h2>
 </section>
 
 <section class="container">
@@ -53,8 +49,49 @@
     </div>
 </section>
 
+
+
+<section class="new-products">
+    <h2>Produse Noi</h2>
+    <div class="container">
+        <div class="new-product">
+            <img src="images/baterie.jpg" alt="Baterie Externa">
+            <h3>Baterie Externa</h3>
+        </div>
+        <div class="new-product">
+            <img src="images/suport.jpg" alt="Suport Telefon">
+            <h3>Suport Telefon</h3>
+        </div>
+        <div class="new-product">
+            <img src="images/cablu.jpg" alt="Cablu USB-C">
+            <h3>Cablu USB-C</h3>
+        </div>
+    </div>
+</section>
+
 <footer>
-    <p>&copy; 2025 Magazin Accesorii Telefon</p>
+    <div class="footer-container">
+       
+        <div class="footer-links">
+            <a href="termeni.html">Termeni și Condiții</a>
+            <a href="despre-noi.html">Despre Noi</a>
+        </div>
+
+        
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a> 
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a> 
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+
+       
+        <div class="contact-info">
+            <p>Email: contact@cristianstore.ro</p>
+            <p>Telefon: +40 123 456 789</p>
+            <p>Adresa: Str. Exemplu 12, Chisinau, Moldova</p>
+        </div>
+    </div>
+    <p>&copy; 2025 Cristian Store. Toate drepturile rezervate.</p>
 </footer>
 
 </body>

@@ -4,31 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produse - Magazin Accesorii Telefon</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-        header { background: #333; color: white; text-align: center; padding: 15px; }
-        nav { background: #555; text-align: center; padding: 10px; }
-        nav a { color: white; text-decoration: none; margin: 15px; font-size: 18px; }
-        .container { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; }
-        .product { border: 1px solid #ddd; padding: 15px; margin: 15px; text-align: center; width: 250px; }
-        .product img { width: 100px; height: auto; }
-        .product button { background: #28a745; color: white; border: none; padding: 10px; cursor: pointer; }
-        .product button:hover { background: #218838; }
-        footer { background: #333; color: white; text-align: center; padding: 10px; margin-top: 20px; }
-    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/produse.css">
 </head>
 <body>
 
 <header>
-    <h1>Produse</h1>
+    <h1>Cristian Store</h1>
 </header>
 
 <nav>
     <a href="index.html">Acasa</a>
     <a href="produse.html">Produse</a>
     <a href="cos.html">Cos de Cumparaturi</a>
-    <a href="contact.html">Contact</a>
 </nav>
+
 
 <section class="container">
     <div class="product">
@@ -62,10 +52,55 @@
         <p><strong>80 RON</strong></p>
         <button>Adauga in cos</button>
     </div>
+
+    <div class="product">
+        <img src="images/baterie.jpg" alt="Incarcator rapid">
+        <h3>Baterie externa</h3>
+        <p>Incarcatorul tau portabil</p>
+        <p><strong>75 RON</strong></p>
+        <button>Adauga in cos</button>
+    </div>
+
+    <div class="product">
+        <img src="images/suport.jpg" alt="Incarcator rapid">
+        <h3>Suport telefon</h3>
+        <p>Putin stoc ramas</p>
+        <p><strong>55 RON</strong></p>
+        <button>Adauga in cos</button>
+    </div>
+
+    <div class="product">
+        <img src="images/cablu.jpg" alt="Incarcator rapid">
+        <h3>Cablu USB-C</h3>
+        <p>Pentru o incarcare rapida</p>
+        <p><strong>20 RON</strong></p>
+        <button>Adauga in cos</button>
+    </div>
 </section>
 
 <footer>
-    <p>&copy; 2025 Magazin Accesorii Telefon</p>
+    <div class="footer-container">
+       
+        <div class="footer-links">
+            <a href="termeni.html">Termeni și Condiții</a>
+            <a href="despre-noi.html">Despre Noi</a>
+        </div>
+
+        
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a> 
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a> 
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+
+       
+        <div class="contact-info">
+            <p>Email: contact@cristianstore.ro</p>
+            <p>Telefon: +40 123 456 789</p>
+            <p>Adresa: Str. Exemplu 12, Chisinau, Moldova</p>
+        </div>
+    </div>
+    <p>&copy; 2025 Cristian Store. Toate drepturile rezervate.</p>
 </footer>
 
 </body>

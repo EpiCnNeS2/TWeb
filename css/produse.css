@@ -1,0 +1,103 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+nav {
+    background: #555;
+    text-align: left;
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 15px;
+    font-size: 18px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.product {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 15px;
+    text-align: center;
+    width: 250px;
+}
+
+.product img {
+    width: 100px;
+    height: auto;
+}
+
+.product button {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.product button:hover {
+    background: #218838;
+}
+
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+footer .footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+footer .footer-container .footer-links a {
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+footer .footer-container .footer-links a:hover {
+    color: #ff6347;
+}
+
+footer .footer-container .social-icons a {
+    margin: 0 10px;
+    font-size: 20px;
+    color: white;
+    transition: color 0.3s;
+}
+
+footer .footer-container .social-icons a:hover {
+    color: #ff6347;
+}
+
+footer .footer-container .contact-info {
+    font-size: 14px;
+    text-align: left;
+}
