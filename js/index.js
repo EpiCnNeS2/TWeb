@@ -3,8 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const images = document.querySelectorAll(".category img, .new-product img");
     
     images.forEach(image => {
+        image.style.cursor = "pointer"; // Schimbă cursorul la hover
+        
         image.addEventListener("click", function () {
-            window.location.href = "produse.html";
+            window.location.href = "produse.php";
         });
     });
 });

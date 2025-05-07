@@ -14,9 +14,9 @@
 </header>
 
 <nav>
-    <a href="index.html">Acasa</a>
-    <a href="produse.html">Produse</a>
-    <a href="cos.html">Cos de Cumparaturi</a>
+    <a href="index.php">Acasa</a>
+    <a href="produse.php">Produse</a>
+    <a href="cos.php">Cos de Cumparaturi</a>
 </nav>
 
 <main>
@@ -69,8 +69,8 @@
 <footer>
     <div class="footer-container">
         <div class="footer-links">
-            <a href="termeni.html">Termeni și Condiții</a>
-            <a href="despre-noi.html">Despre Noi</a>
+            <a href="termeni.php">Termeni și Condiții</a>
+            <a href="despre-noi.php">Despre Noi</a>
         </div>
         <div class="social-icons">
             <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>

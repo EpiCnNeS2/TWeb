@@ -23,10 +23,10 @@
 </header>
 
 <nav>
-    <a href="index.html">Acasa</a>
-    <a href="produse.html">Produse</a>
-    <a href="cos.html">Cos de Cumparaturi</a>
-    <a href="contact.html">Contact</a>
+    <a href="index.php">Acasa</a>
+    <a href="produse.php">Produse</a>
+    <a href="cos.php">Cos de Cumparaturi</a>
+    <a href="contact.php">Contact</a>
 </nav>
 
 <div class="container">
@@ -34,7 +34,7 @@
 
     <div class="info">
         <strong>Adresa:</strong>
-        <p>Strada Exemplu 123, București, România</p>
+        <p>Strada Exemplu 123, Bucuresti, Romania</p>
     </div>
 
     <div class="info">
@@ -50,8 +50,8 @@
     <div class="info">
         <strong>Ore de lucru:</strong>
         <p>Luni - Vineri: 09:00 - 18:00</p>
-        <p>Sâmbătă: 10:00 - 14:00</p>
-        <p>Închis Duminica</p>
+        <p>Sambata: 10:00 - 14:00</p>
+        <p>Inchis Duminica</p>
     </div>
 </div>
 

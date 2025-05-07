@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comandă confirmată - Cristian Store</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+        .success-message { color: #28a745; font-size: 24px; margin-bottom: 20px; }
+        .order-details { background: #f8f9fa; padding: 20px; border-radius: 5px; max-width: 600px; margin: 0 auto; }
+    </style>
+</head>
+<body>
+    <div class="success-message">Comanda ta a fost plasată cu succes!</div>
+    <div class="order-details">
+        <p>Îți mulțumim pentru comandă!</p>
+        <p>Numărul comenzii: <strong id="order-id"></strong></p>
+        <p>Vei primi un email cu detalii despre comandă.</p>
+        <a href="index.php" class="btn">Înapoi la pagina principală</a>
+    </div>
+
+    <script>
+        // Get order ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const orderId = urlParams.get('order_id');
+        if (orderId) {
+            document.getElementById('order-id').textContent = orderId;
+        }
+    </script>
+</body>
+</html>

@@ -1,74 +1,114 @@
 document.addEventListener('DOMContentLoaded', function() {
     const checkoutForm = document.querySelector('#checkout-form');
 
-    // Verifică dacă formularul există
+    // Load cart items and display them
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartTable = document.querySelector('#cart-summary tbody');
+    const cartTotal = document.querySelector('#cart-total');
+    
+    // Display cart items
+    let total = 0;
+    cartTable.innerHTML = '';
+    cart.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${item.name}</td>
+            <td>${item.price} RON</td>
+        `;
+        cartTable.appendChild(row);
+        total += item.price;
+    });
+    cartTotal.textContent = `${total} RON`;
+
     if (!checkoutForm) {
         console.error('Formularul nu a fost găsit!');
         return;
     }
 
-    // Ascultător pentru evenimentul submit
     checkoutForm.addEventListener('submit', function(e) {
-        e.preventDefault(); // Previne trimiterea automată a formularului
+        e.preventDefault();
 
-        // Adaugă logica pentru procesarea comenzii (de exemplu, validare date, afișare alertă, etc.)
-        const name = checkoutForm.querySelector('#name').value;
-        const email = checkoutForm.querySelector('#email').value;
-        const phone = checkoutForm.querySelector('#phone').value;
-        const address = checkoutForm.querySelector('#address').value;
-        const paymentMethod = checkoutForm.querySelector('input[name="payment"]:checked');
+        // Get form values
+        const formData = {
+            name: document.getElementById('name').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            phone: document.getElementById('phone').value.trim(),
+            address: document.getElementById('address').value.trim(),
+            paymentMethod: document.querySelector('input[name="payment"]:checked')?.value,
+            cart: cart
+        };
 
-        // Verifică dacă toate câmpurile sunt completate corect
-        if (!name || !email || !phone || !address || !paymentMethod) {
-            alert('Te rog să completezi toate câmpurile!');
+        // Validate form
+        if (!formData.name || !formData.email || !formData.phone || !formData.address || !formData.paymentMethod) {
+            alert('Te rog completează toate câmpurile obligatorii!');
             return;
         }
 
-        // Afișează datele în consolă (sau le poți salva/trimite)
-        console.log('Comanda a fost procesată:', {
-            name,
-            email,
-            phone,
-            address,
-            paymentMethod: paymentMethod.value
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email)) {
+            alert('Te rog introdu o adresă de email validă!');
+            return;
+        }
+
+        // Phone validation (simple check for at least 6 digits)
+        const phoneRegex = /[0-9]{6,}/;
+        if (!phoneRegex.test(formData.phone)) {
+            alert('Te rog introdu un număr de telefon valid!');
+            return;
+        }
+
+        // Disable submit button to prevent multiple submissions
+        const submitBtn = checkoutForm.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Se procesează...';
+
+        // Send data to server
+        fetch('process_order.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.status === 'success') {
+                // Clear cart on success
+                localStorage.removeItem('cart');
+                // Redirect to confirmation page with order ID
+                window.location.href = `pagina-confirmare.html?order_id=${data.order_id}`;
+            } else {
+                alert(`Eroare: ${data.message}`);
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Trimite Comanda';
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('A apărut o eroare la procesarea comenzii. Te rugăm să încerci din nou.');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Trimite Comanda';
         });
-
-        // Afișează un mesaj de succes
-        alert(`Comanda a fost trimisă cu succes!\n\nDetalii comandă:\nNume: ${name}\nEmail: ${email}\nTelefon: ${phone}\nAdresă: ${address}\nMetoda de plată: ${paymentMethod.value}`);
-
-        // Redirecționare (optional, dacă vrei să duci utilizatorul undeva după procesare)
-        // window.location.href = 'pagina-confirmare.html'; // de exemplu, redirecționezi către o pagină de confirmare
-
-        // Sau poți curăța coșul de cumpărături (opțional)
-        localStorage.removeItem('cart');
     });
-});
-document.addEventListener("DOMContentLoaded", function() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || []; // Obținem coșul din localStorage sau un coș gol
-    const cartTable = document.querySelector('#cart-summary tbody');
-    const totalElement = document.querySelector('#cart-total');
 
-    // Funcție pentru a actualiza sumarul comenzii
-    function updateCartSummary() {
-        cartTable.innerHTML = ''; // Resetăm tabelul
-        let total = 0;
-
-        // Adăugăm fiecare produs din coș în tabel
-        cart.forEach(product => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${product.name}</td>
-                <td>${product.price} RON</td>
-            `;
-            cartTable.appendChild(row);
-            total += product.price;
+    // Auto-format phone number
+    const phoneInput = document.getElementById('phone');
+    if (phoneInput) {
+        phoneInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 3) {
+                value = value.substring(0, 3) + ' ' + value.substring(3);
+            }
+            if (value.length > 7) {
+                value = value.substring(0, 7) + ' ' + value.substring(7);
+            }
+            e.target.value = value;
         });
-
-        // Actualizăm totalul
-        totalElement.textContent = `${total} RON`;
     }
-
-    // Actualizăm sumarul comenzii
-    updateCartSummary();
 });
-

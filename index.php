@@ -15,9 +15,9 @@
 
 <nav>
     <div>
-        <a href="index.html">Acasa</a>
-        <a href="produse.html">Produse</a>
-        <a href="cos.html">Cos de Cumparaturi</a>
+        <a href="index.php">Acasa</a>
+        <a href="produse.php">Produse</a>
+        <a href="cos.php">Cos de Cumparaturi</a>
     </div>
     <input type="text" class="search-bar" placeholder="Cauta produse...">
 </nav>
@@ -49,8 +49,6 @@
     </div>
 </section>
 
-
-
 <section class="new-products">
     <h2>Produse Noi</h2>
     <div class="container">
@@ -71,20 +69,17 @@
 
 <footer>
     <div class="footer-container">
-       
         <div class="footer-links">
-            <a href="termeni.html">Termeni și Condiții</a>
-            <a href="despre-noi.html">Despre Noi</a>
+            <a href="termeni.php">Termeni si Conditii</a>
+            <a href="despre-noi.php">Despre Noi</a>
         </div>
 
-        
         <div class="social-icons">
             <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a> 
             <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a> 
             <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
         </div>
 
-       
         <div class="contact-info">
             <p>Email: contact@cristianstore.ro</p>
             <p>Telefon: +40 123 456 789</p>
@@ -93,6 +88,7 @@
     </div>
     <p>&copy; 2025 Cristian Store. Toate drepturile rezervate.</p>
 </footer>
+
 <script src="js/index.js"></script>
 
 </body>
