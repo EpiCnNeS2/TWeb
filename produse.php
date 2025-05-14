@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="css/produse.css">
 </head>
 <body>
-    <script src="js/cos.js"></script>
 
 <header>
     <h1>Cristian Store</h1>
@@ -100,5 +99,6 @@
     <p>&copy; 2025 Cristian Store. Toate drepturile rezervate.</p>
 </footer>
 
+<script src="js/cos.js"></script>
 </body>
 </html>

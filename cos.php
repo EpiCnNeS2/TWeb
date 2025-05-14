@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cristian Store</title>
+    <title>Cristian Store - Cos de Cumparaturi</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/cos.css">
 </head>
@@ -36,10 +36,8 @@
         </table>
         <p class="total">Total: 0 RON</p>
         <form id="checkout-form">
-            <!-- Câmpuri formular -->
             <button type="submit" class="btn">Checkout -></button>
         </form>
-        
     </div>
 </main>
 

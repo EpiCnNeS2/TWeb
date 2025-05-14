@@ -1,40 +1,39 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const checkoutForm = document.querySelector('#checkout-form');
+$(document).ready(function () {
+    const checkoutForm = $('#checkout-form');
 
     // Load cart items and display them
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const cartTable = document.querySelector('#cart-summary tbody');
-    const cartTotal = document.querySelector('#cart-total');
-    
+    const cartTable = $('#cart-summary tbody');
+    const cartTotal = $('#cart-total');
+
     // Display cart items
     let total = 0;
-    cartTable.innerHTML = '';
+    cartTable.empty();
     cart.forEach(item => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${item.name}</td>
-            <td>${item.price} RON</td>
-        `;
-        cartTable.appendChild(row);
-        total += item.price;
+        const row = `<tr>
+            <td>${item.name} ${item.quantity > 1 ? `(x${item.quantity})` : ''}</td>
+            <td>${(item.price * item.quantity).toFixed(2)} RON</td>
+        </tr>`;
+        cartTable.append(row);
+        total += item.price * item.quantity;
     });
-    cartTotal.textContent = `${total} RON`;
+    cartTotal.text(`${total.toFixed(2)} RON`);
 
-    if (!checkoutForm) {
+    if (checkoutForm.length === 0) {
         console.error('Formularul nu a fost găsit!');
         return;
     }
 
-    checkoutForm.addEventListener('submit', function(e) {
+    checkoutForm.on('submit', function (e) {
         e.preventDefault();
 
         // Get form values
         const formData = {
-            name: document.getElementById('name').value.trim(),
-            email: document.getElementById('email').value.trim(),
-            phone: document.getElementById('phone').value.trim(),
-            address: document.getElementById('address').value.trim(),
-            paymentMethod: document.querySelector('input[name="payment"]:checked')?.value,
+            name: $('#name').val().trim(),
+            email: $('#email').val().trim(),
+            phone: $('#phone').val().trim(),
+            address: $('#address').val().trim(),
+            paymentMethod: $('input[name="payment"]:checked').val(),
             cart: cart
         };
 
@@ -51,56 +50,43 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Phone validation (simple check for at least 6 digits)
-        const phoneRegex = /[0-9]{6,}/;
-        if (!phoneRegex.test(formData.phone)) {
-            alert('Te rog introdu un număr de telefon valid!');
+        // Phone validation (accept any non-empty value)
+        if (!formData.phone) {
+            alert('Te rog introdu un număr de telefon!');
             return;
         }
 
         // Disable submit button to prevent multiple submissions
-        const submitBtn = checkoutForm.querySelector('button[type="submit"]');
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Se procesează...';
+        const submitBtn = checkoutForm.find('button[type="submit"]');
+        submitBtn.prop('disabled', true).text('Se procesează...');
 
-        // Send data to server
-        fetch('process_order.php', {
+        // Send data to server using jQuery AJAX
+        $.ajax({
+            url: 'process_order.php',
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
+            contentType: 'application/json',
+            data: JSON.stringify(formData),
+            dataType: 'json',
+            success: function (data) {
+                if (data.status === 'success') {
+                    localStorage.removeItem('cart');
+                    window.location.href = `pagina-confirmare.html?order_id=${data.order_id}`;
+                } else {
+                    alert(`Eroare: ${data.message}`);
+                    submitBtn.prop('disabled', false).text('Trimite Comanda');
+                }
             },
-            body: JSON.stringify(formData)
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+            error: function () {
+                alert('A apărut o eroare la procesarea comenzii. Te rugăm să încerci din nou.');
+                submitBtn.prop('disabled', false).text('Trimite Comanda');
             }
-            return response.json();
-        })
-        .then(data => {
-            if (data.status === 'success') {
-                // Clear cart on success
-                localStorage.removeItem('cart');
-                // Redirect to confirmation page with order ID
-                window.location.href = `pagina-confirmare.html?order_id=${data.order_id}`;
-            } else {
-                alert(`Eroare: ${data.message}`);
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Trimite Comanda';
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('A apărut o eroare la procesarea comenzii. Te rugăm să încerci din nou.');
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Trimite Comanda';
         });
     });
 
     // Auto-format phone number
-    const phoneInput = document.getElementById('phone');
-    if (phoneInput) {
-        phoneInput.addEventListener('input', function(e) {
+    const phoneInput = $('#phone');
+    if (phoneInput.length) {
+        phoneInput.on('input', function (e) {
             let value = e.target.value.replace(/\D/g, '');
             if (value.length > 3) {
                 value = value.substring(0, 3) + ' ' + value.substring(3);

@@ -86,6 +86,7 @@
     <p>&copy; 2025 Cristian Store. Toate drepturile rezervate.</p>
 </footer>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="js/checkout.js"></script>
 </body>
 </html>
